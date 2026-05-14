@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 45 33% 95%;
+    --card: 0 0% 2%;
+    --card-foreground: 45 33% 95%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 45 33% 95%;
+    --primary: 43 47% 55%;
+    --primary-foreground: 0 0% 2%;
+    --secondary: 40 24% 91%;
+    --secondary-foreground: 0 0% 2%;
+    --muted: 30 8% 30%;
+    --muted-foreground: 30 15% 60%;
+    --accent: 30 46% 64%;
+    --accent-foreground: 0 0% 2%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 33% 95%;
+    --border: 30 8% 20%;
+    --input: 30 8% 20%;
+    --ring: 43 47% 55%;
+    --radius: 0.625rem;
+
+    --color-void: #050505;
+    --color-bone: #F1F0EA;
+    --color-gold: #C9A84C;
+    --color-paper: #F9F8F2;
+    --color-bronze: #5C4D3C;
+    --color-amber: #D4A574;
+    --color-ink: #000000;
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-paper);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  .font-body {
+    font-family: 'Manrope', sans-serif;
+  }
+
+  .font-accent {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .text-gold {
+    color: var(--color-gold);
+  }
+
+  .text-bronze {
+    color: var(--color-bronze);
+  }
+
+  .text-paper {
+    color: var(--color-paper);
+  }
+
+  .text-amber {
+    color: var(--color-amber);
+  }
+
+  .bg-void {
+    background-color: var(--color-void);
+  }
+
+  .bg-bone {
+    background-color: var(--color-bone);
+  }
+
+  .bg-amber {
+    background-color: var(--color-amber);
+  }
+
+  .bg-gold {
+    background-color: var(--color-gold);
+  }
+
+  .transition-smooth {
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: var(--color-paper);
+}
+
+/* Hide Kimi platform watermark */
+#kimi-watermark,
+.kimi-watermark,
+[data-kimi-watermark],
+.kimi-badge,
+#kimi-badge,
+[data-agent-watermark],
+.agent-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
