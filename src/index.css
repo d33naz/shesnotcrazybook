@@ -4,72 +4,107 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --background: 0 0% 2%;
+    --foreground: 45 33% 95%;
+    --card: 0 0% 2%;
+    --card-foreground: 45 33% 95%;
+    --popover: 0 0% 2%;
+    --popover-foreground: 45 33% 95%;
+    --primary: 43 47% 55%;
+    --primary-foreground: 0 0% 2%;
+    --secondary: 40 24% 91%;
+    --secondary-foreground: 0 0% 2%;
+    --muted: 30 8% 30%;
+    --muted-foreground: 30 15% 60%;
+    --accent: 30 46% 64%;
+    --accent-foreground: 0 0% 2%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 33% 95%;
+    --border: 30 8% 20%;
+    --input: 30 8% 20%;
+    --ring: 43 47% 55%;
     --radius: 0.625rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --color-void: #050505;
+    --color-bone: #F1F0EA;
+    --color-gold: #C9A84C;
+    --color-paper: #F9F8F2;
+    --color-bronze: #5C4D3C;
+    --color-amber: #D4A574;
+    --color-ink: #000000;
   }
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+  body {
+    background-color: var(--color-void);
+    color: var(--color-paper);
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+@layer utilities {
+  .font-heading {
+    font-family: 'Cormorant Garamond', serif;
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .font-body {
+    font-family: 'Manrope', sans-serif;
   }
+
+  .font-accent {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .text-gold {
+    color: var(--color-gold);
+  }
+
+  .text-bronze {
+    color: var(--color-bronze);
+  }
+
+  .text-paper {
+    color: var(--color-paper);
+  }
+
+  .text-amber {
+    color: var(--color-amber);
+  }
+
+  .bg-void {
+    background-color: var(--color-void);
+  }
+
+  .bg-bone {
+    background-color: var(--color-bone);
+  }
+
+  .bg-amber {
+    background-color: var(--color-amber);
+  }
+
+  .bg-gold {
+    background-color: var(--color-gold);
+  }
+
+  .transition-smooth {
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: var(--color-paper);
 }
