@@ -88,7 +88,7 @@ export default function PhilosophySection() {
             transform: 'translateY(20px)',
           }}
         >
-          A Practical Guide to Hearing Her, Repairing Conflict, and Rebuilding Connection
+          The Philosophy
         </span>
 
         <h2

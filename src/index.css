@@ -108,3 +108,21 @@ html {
   background: rgba(201, 168, 76, 0.3);
   color: var(--color-paper);
 }
+
+/* Hide Kimi platform watermark */
+#kimi-watermark,
+.kimi-watermark,
+[data-kimi-watermark],
+.kimi-badge,
+#kimi-badge,
+[data-agent-watermark],
+.agent-watermark {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  position: absolute !important;
+  z-index: -9999 !important;
+}
