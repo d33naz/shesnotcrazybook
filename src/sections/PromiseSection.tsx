@@ -273,7 +273,7 @@ export default function PromiseSection() {
             <img
               ref={coverRef}
               src="/images/book-cover.png"
-              alt="She's Not Crazy, You're Just Not Listening — A Practical Guide to Hearing Her, Repairing Conflict, and Rebuilding Connection by Austin D. Howell"
+              alt="She's Not Crazy, You're Just Not Listening — A Practical Guide to Listening Better, Repairing Faster, and Building Healthier Patterns by Austin D. Howell"
               style={{
                 position: 'relative',
                 width: '100%',

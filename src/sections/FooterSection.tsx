@@ -65,8 +65,8 @@ export default function FooterSection() {
                 maxWidth: '300px',
               }}
             >
-              A practical guide to hearing her, repairing conflict, and
-              rebuilding connection.
+              A Practical Guide to Hearing Her, Repairing Conflict, and
+              Rebuilding Connection.
             </p>
           </div>
 

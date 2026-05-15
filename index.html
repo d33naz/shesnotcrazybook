@@ -164,7 +164,10 @@
       html { background: #050505; }
       body { margin: 0; padding: 0; background: #050505; color: #F9F8F2; }
       /* Hide Kimi watermark via CSS */
-      #kimi-watermark,.kimi-watermark,[data-kimi-watermark],.kimi-badge,#kimi-badge,[data-agent-watermark],.agent-watermark { display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important; }
+      #kimi-watermark,.kimi-watermark,[data-kimi-watermark],.kimi-badge,#kimi-badge,[data-agent-watermark],.agent-watermark,.kimi-assistant-badge,#kimi-assistant-badge { display:none!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important; }
+      /* Aggressive: hide any fixed-position bottom-right element that looks like a watermark */
+      body > div:last-child, body > iframe:last-child { position: relative !important; }
+      div[style*="position: fixed"][style*="bottom: 0"], div[style*="position:fixed"][style*="bottom:0"] { display: none !important; }
     </style>
 
     <!-- Plausible Analytics -->
@@ -185,22 +188,67 @@
       <p>This website requires JavaScript for the best experience. You can still <a href="https://buy.stripe.com/8x2dR971559cgUl9Zv2kw00">purchase the book here</a>.</p>
     </noscript>
     <script>
-      // Remove Kimi platform watermark
+      // Aggressive watermark removal — watches for dynamically injected elements
       (function() {
-        function removeKimiWatermark() {
-          var selectors = ['#kimi-watermark','.kimi-watermark','[data-kimi-watermark]','.kimi-badge','#kimi-badge','[data-agent-watermark]','.agent-watermark'];
+        function killWatermark() {
+          var selectors = [
+            '#kimi-watermark','.kimi-watermark','[data-kimi-watermark]',
+            '.kimi-badge','#kimi-badge','[data-agent-watermark]','.agent-watermark',
+            '.kimi-assistant-badge','#kimi-assistant-badge',
+            '[class*="kimi"]','[id*="kimi"]','[class*="agent"]',
+            'div[style*="position: fixed"][style*="bottom"][style*="right"]',
+            'div[style*="z-index: 9999"]','div[style*="z-index:9999"]'
+          ];
           selectors.forEach(function(sel) {
-            var els = document.querySelectorAll(sel);
-            els.forEach(function(el) {
-              el.remove();
-            });
+            try {
+              document.querySelectorAll(sel).forEach(function(el) {
+                var text = el.textContent || '';
+                var html = el.innerHTML || '';
+                if (text.toLowerCase().indexOf('kimi') !== -1 ||
+                    html.toLowerCase().indexOf('kimi') !== -1 ||
+                    el.className.toLowerCase().indexOf('kimi') !== -1 ||
+                    el.id.toLowerCase().indexOf('kimi') !== -1) {
+                  el.remove();
+                }
+              });
+            } catch(e) {}
+          });
+          // Target shadow DOM iframes
+          document.querySelectorAll('iframe').forEach(function(el) {
+            if (el.src && el.src.indexOf('kimi') !== -1) el.remove();
           });
         }
-        document.addEventListener('DOMContentLoaded', removeKimiWatermark);
-        window.addEventListener('load', removeKimiWatermark);
-        setTimeout(removeKimiWatermark, 500);
-        setTimeout(removeKimiWatermark, 1500);
-        setTimeout(removeKimiWatermark, 3000);
+        // Run on multiple events
+        document.addEventListener('DOMContentLoaded', killWatermark);
+        window.addEventListener('load', killWatermark);
+        [100, 300, 500, 1000, 1500, 2000, 3000, 5000].forEach(function(t) {
+          setTimeout(killWatermark, t);
+        });
+        // MutationObserver to catch dynamically injected watermark
+        if (window.MutationObserver) {
+          var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+              mutation.addedNodes.forEach(function(node) {
+                if (node.nodeType === 1) {
+                  var el = node;
+                  var cls = (el.className || '').toLowerCase();
+                  var id = (el.id || '').toLowerCase();
+                  var txt = (el.textContent || '').toLowerCase();
+                  if (cls.indexOf('kimi') !== -1 || id.indexOf('kimi') !== -1 ||
+                      cls.indexOf('agent') !== -1 || id.indexOf('agent') !== -1 ||
+                      txt.indexOf('kimi') !== -1) {
+                    el.remove();
+                  }
+                  // Also check children
+                  if (el.querySelectorAll) {
+                    el.querySelectorAll('[class*="kimi"], [id*="kimi"], [class*="agent"]').forEach(function(c) { c.remove(); });
+                  }
+                }
+              });
+            });
+          });
+          observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
       })();
     </script>
   </body>

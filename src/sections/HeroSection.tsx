@@ -110,12 +110,26 @@ export default function HeroSection() {
             fontStyle: 'italic',
             letterSpacing: '-0.5px',
             color: '#F9F8F2',
-            marginBottom: '48px',
+            marginBottom: '12px',
             opacity: 0,
             transform: 'translateY(20px)',
           }}
         >
           Austin D. Howell
+        </p>
+
+        <p
+          className="font-body"
+          style={{
+            fontSize: '13px',
+            fontWeight: 500,
+            letterSpacing: '1.5px',
+            textTransform: 'uppercase',
+            color: '#5C4D3C',
+            marginBottom: '48px',
+          }}
+        >
+          Part 1 — The Foundations
         </p>
 
         <a

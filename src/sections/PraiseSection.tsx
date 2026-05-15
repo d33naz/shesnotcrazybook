@@ -18,7 +18,7 @@ const testimonials: Testimonial[] = [
     location: 'Sydney, Australia',
   },
   {
-    quote: "Finally, a relationship guide that speaks to men without talking down to them. Practical, honest, and genuinely transformative.",
+    quote: "Finally, a relationship guide that speaks your language without talking down to you. Practical, honest, and genuinely transformative.",
     name: 'James O\'Brien',
     location: 'Melbourne, Australia',
   },
@@ -43,7 +43,7 @@ const testimonials: Testimonial[] = [
     location: 'Vancouver, Canada',
   },
   {
-    quote: "It's not easy, even just to start the first step, but we are here to try, right? The universe has brought us here to try, one baby step at a time. Let's get these started!\n\nI love the author's goodwill and sincerity. I love how it's written with logic and includes so many examples for us to understand and put into practice. Good luck to us all!",
+    quote: "It's not easy, even just to take the first step, but we are here to try, right? The universe has brought us here to try, one baby step at a time. Let's get these started!\n\nI love the author's goodwill and sincerity. I love how it's written with logic and includes so many examples for us to understand and put into practice. Good luck to us all!",
     name: 'Monique Yi-Cheng Kao',
     location: 'Taipei, Taiwan',
   },
