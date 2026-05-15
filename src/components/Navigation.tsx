@@ -138,10 +138,9 @@ export default function Navigation() {
 
         {/* Mobile Menu Button */}
         <button
-          className="nav-mobile"
+          className="nav-mobile-btn"
           onClick={() => setMenuOpen(!menuOpen)}
           style={{
-            display: 'none',
             background: 'none',
             border: 'none',
             cursor: 'pointer',
@@ -178,7 +177,7 @@ export default function Navigation() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="nav-mobile"
+          className="nav-mobile-panel"
           style={{
             position: 'absolute',
             top: '64px',
@@ -187,7 +186,6 @@ export default function Navigation() {
             background: 'rgba(5, 5, 5, 0.95)',
             backdropFilter: 'blur(12px)',
             padding: '24px 32px',
-            display: 'flex',
             flexDirection: 'column',
             gap: '20px',
           }}
@@ -240,10 +238,12 @@ export default function Navigation() {
       <style>{`
         @media (max-width: 768px) {
           .nav-desktop { display: none !important; }
-          .nav-mobile { display: block !important; }
+          .nav-mobile-btn { display: block !important; }
+          .nav-mobile-panel { display: flex !important; }
         }
         @media (min-width: 769px) {
-          .nav-mobile { display: none !important; }
+          .nav-mobile-btn { display: none !important; }
+          .nav-mobile-panel { display: none !important; }
         }
       `}</style>
     </nav>
